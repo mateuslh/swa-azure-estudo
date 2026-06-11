@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import AzureIcon from './AzureIcon';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiDatabase } from 'react-icons/fi';
 
 const links = [
   { href: '#origem', label: 'Origem' },
@@ -19,6 +20,8 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
+  const location = useLocation();
+  const isPessoas = location.pathname === '/pessoas';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -47,7 +50,7 @@ export default function Navbar() {
         </motion.a>
 
         <div className="hidden lg:flex items-center gap-1">
-          {links.map((link) => (
+          {!isPessoas && links.map((link) => (
             <motion.a
               key={link.href}
               href={link.href}
@@ -58,6 +61,15 @@ export default function Navbar() {
               {link.label}
             </motion.a>
           ))}
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link
+              to={isPessoas ? '/' : '/pessoas'}
+              className="ml-2 flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-md border border-[#0078d4]/40 text-[#50a3e0] hover:bg-[#0078d4]/10 transition-all duration-200"
+            >
+              <FiDatabase size={13} />
+              {isPessoas ? 'Voltar' : 'Pessoas'}
+            </Link>
+          </motion.div>
         </div>
 
         <button
@@ -76,7 +88,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-[#071525]/98 border-b border-[#0078d4]/20"
           >
-            {links.map((link) => (
+            {!isPessoas && links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -86,6 +98,14 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <Link
+              to={isPessoas ? '/' : '/pessoas'}
+              className="flex items-center gap-2 px-6 py-3 text-[#50a3e0] hover:bg-[#0078d4]/10 transition-all border-t border-[#0078d4]/20"
+              onClick={() => setOpen(false)}
+            >
+              <FiDatabase size={14} />
+              {isPessoas ? 'Voltar' : 'Pessoas'}
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

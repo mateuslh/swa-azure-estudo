@@ -1,4 +1,5 @@
 import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Timeline from './components/Timeline';
@@ -10,11 +11,11 @@ import GlobalCoverage from './components/GlobalCoverage';
 import Pricing from './components/Pricing';
 import Governance from './components/Governance';
 import Conclusion from './components/Conclusion';
+import Pessoas from './pages/Pessoas';
 
-export default function App() {
+function Home() {
   return (
-    <div className="min-h-screen bg-[#050d1a] text-white">
-      <Navbar />
+    <>
       <Hero />
       <Timeline />
       <Architecture />
@@ -25,6 +26,20 @@ export default function App() {
       <Pricing />
       <Governance />
       <Conclusion />
-    </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-[#050d1a] text-white">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/pessoas" element={<Pessoas />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
