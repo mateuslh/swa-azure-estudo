@@ -6,7 +6,7 @@ variable "subscription_id" {
 variable "project" {
   description = "Nome do projeto — usado como base para nomear recursos."
   type        = string
-  default     = "azure-estudo"
+  default     = "swa-azure-estudo"
 }
 
 variable "owner" {

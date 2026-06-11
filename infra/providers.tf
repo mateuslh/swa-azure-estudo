@@ -12,7 +12,7 @@ terraform {
     resource_group_name  = "rg-azure-estudo"
     storage_account_name = "stterraformadpstate"
     container_name       = "tfstate"
-    key                  = "azure-estudo.tfstate"
+    key                  = "swa-azure-estudo.tfstate"
   }
 }
 

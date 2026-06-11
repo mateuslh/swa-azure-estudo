@@ -5,7 +5,7 @@ subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 owner           = "seu-usuario"
 
 # Valores opcionais — os defaults já estão definidos em variables.tf
-# project     = "azure-estudo"
+# project     = "swa-azure-estudo"
 # environment = "study"
 # rg_location = "brazilsouth"
 # swa_location = "eastus2"
