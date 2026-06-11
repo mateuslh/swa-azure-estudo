@@ -9,8 +9,8 @@ terraform {
   }
 
   backend "azurerm" {
-    resource_group_name  = "rg-azure-estudo"
-    storage_account_name = "stterraformadpstate"
+    resource_group_name  = "rg-tfstate"
+    storage_account_name = "stmateuslhtfstate"
     container_name       = "tfstate"
     key                  = "swa-azure-estudo.tfstate"
   }
