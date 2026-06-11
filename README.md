@@ -70,7 +70,7 @@ Toda a infraestrutura foi provisionada via **Azure CLI** sem acesso ao portal.
 
 ```bash
 az group create \
-  --name rg-azure-estudo \
+  --name rg-swa-azure-estudo \
   --location brazilsouth \
   --tags environment=study owner=mateuslh product=azure-estudo
 ```
@@ -90,7 +90,7 @@ az provider register --namespace Microsoft.Web
 ```bash
 az staticwebapp create \
   --name swa-azure-estudo \
-  --resource-group rg-azure-estudo \
+  --resource-group rg-swa-azure-estudo \
   --location eastus2 \
   --sku Free \
   --tags environment=study owner=mateuslh product=azure-estudo
@@ -110,7 +110,7 @@ O Azure SWA gera um token exclusivo que autoriza a pipeline a fazer uploads. Ext
 # Extrair o token
 az staticwebapp secrets list \
   --name swa-azure-estudo \
-  --resource-group rg-azure-estudo \
+  --resource-group rg-swa-azure-estudo \
   --query "properties.apiKey" -o tsv
 
 # Adicionar ao GitHub (requer gh CLI autenticado)
@@ -214,7 +214,7 @@ O `staticwebapp.config.json` resolve isso redirecionando todas as requisições 
 │  Azure Static Web Apps                                      │
 │  ├── CDN global distribui os arquivos                       │
 │  ├── HTTPS com certificado gerenciado                       │
-│  └── URL: ashy-grass-0b545950f.7.azurestaticapps.net        │
+│  └── URL: wonderful-flower-06970450f.7.azurestaticapps.net  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
