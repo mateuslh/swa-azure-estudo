@@ -115,7 +115,7 @@ az staticwebapp secrets list \
 
 # Adicionar ao GitHub (requer gh CLI autenticado)
 gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN \
-  --repo mateuslh/azure-estudo \
+  --repo mateuslh/swa-azure-estudo \
   --body "<token>"
 ```
 
