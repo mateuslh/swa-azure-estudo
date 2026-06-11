@@ -8,13 +8,12 @@ terraform {
     }
   }
 
-  # Descomente e configure para usar backend remoto (recomendado em time)
-  # backend "azurerm" {
-  #   resource_group_name  = "rg-tfstate"
-  #   storage_account_name = "stmateuslhtfstate"
-  #   container_name       = "tfstate"
-  #   key                  = "azure-estudo/terraform.tfstate"
-  # }
+  backend "azurerm" {
+    resource_group_name  = "rg-azure-estudo"
+    storage_account_name = "stterraformadpstate"
+    container_name       = "tfstate"
+    key                  = "azure-estudo.tfstate"
+  }
 }
 
 provider "azurerm" {
