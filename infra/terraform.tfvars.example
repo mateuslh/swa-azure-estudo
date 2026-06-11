@@ -1,0 +1,12 @@
+# Copie este arquivo para terraform.tfvars e preencha os valores.
+# NUNCA commite terraform.tfvars — ele está no .gitignore.
+
+subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+owner           = "seu-usuario"
+
+# Valores opcionais — os defaults já estão definidos em variables.tf
+# project     = "azure-estudo"
+# environment = "study"
+# rg_location = "brazilsouth"
+# swa_location = "eastus2"
+# swa_sku      = "Free"
