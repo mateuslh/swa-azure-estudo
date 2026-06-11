@@ -2,7 +2,7 @@
 
 Site técnico construído em React para apresentar o Microsoft Azure a arquitetos sênior. Cobre origem, arquitetura ARM, principais serviços, vantagens, comparativo com AWS e Google Cloud, cobertura global e modelos de preço.
 
-**URL de produção:** https://ashy-grass-0b545950f.7.azurestaticapps.net
+**URL de produção:** https://wonderful-flower-06970450f.7.azurestaticapps.net
 
 ---
 
@@ -239,5 +239,30 @@ npm run build
 
 | Recurso | Nome | Região | SKU |
 |---|---|---|---|
-| Resource Group | `rg-azure-estudo` | Brazil South | — |
+| Resource Group | `rg-swa-azure-estudo` | Brazil South | — |
 | Static Web App | `swa-azure-estudo` | East US 2 | Free |
+
+---
+
+## Infraestrutura como Código (Terraform)
+
+A infraestrutura é gerenciada via Terraform em `infra/`. O state fica no Azure Blob Storage (`stmateuslhtfstate / tfstate / swa-azure-estudo.tfstate`).
+
+Para recriar do zero:
+```sh
+cd infra
+terraform init
+terraform apply -var="subscription_id=<id>"
+
+# Após o apply, atualizar o secret no GitHub com o novo token:
+terraform output -raw deployment_token | gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN --repo mateuslh/swa-azure-estudo --body -
+```
+
+O workflow `.github/workflows/terraform.yml` permite executar `apply` ou `destroy` manualmente via GitHub Actions.
+
+---
+
+## Projetos relacionados
+
+- [adp-azure-estudo](https://github.com/mateuslh/adp-azure-estudo) — Infraestrutura PostgreSQL
+- [faa-azure-estudo](https://github.com/mateuslh/faa-azure-estudo) — API de Pessoas (Azure Container App)
